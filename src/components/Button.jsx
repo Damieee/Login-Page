@@ -1,12 +1,17 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
+function onClickEvent(event, onSubmit) {
+  event.preventDefault();
+  onSubmit();
+  alert('User Logged in');
+}
 
-function MyButton() {
+function MyButton({ onSubmit }) {
   return (
-            <Button variant="primary" type="submit" className="w-100">
-                Login
-            </Button>
+    <Button variant="primary" type="submit" className="w-100" onClick={(event) => onClickEvent(event, onSubmit)}>
+      Login
+    </Button>
   );
 }
 

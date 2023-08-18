@@ -3,7 +3,7 @@ import { Container, Row, Col, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyForm from './Form';
 import Header from './Header';
-import MyButton from './Button';
+
 
 function App() {
   return (
@@ -13,7 +13,6 @@ function App() {
           <Form>
             <Header/>
             <MyForm/>
-            <MyButton/>
           </Form>
         </Col>
       </Row>
