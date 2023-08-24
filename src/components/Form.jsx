@@ -4,25 +4,39 @@ import MyButton from './Button'; // Update the import path for MyButton componen
 
 function MyForm() {
   // State to hold form data
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
 
-  // Constant to update form data when inputs change
-  const handleInputChange = (event) => {
-    const { id, value } = event.target;
-    // Update the state with the new value while keeping the rest unchanged
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value
-    }));
+  const [userEmail, setuserEmail] = useState("");
+  
+  const [userPassword, setuserPassword] = useState("");
+
+  const onInputChange = (setState) => (event) => {
+    setState(event.target.value);
   };
 
   // Function to handle form submission
-  const handleSubmit = () => {
-    console.log('Form data:', formData);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Clear previous error messages
+    setuserEmail("");
+    setuserPassword("");
+
+      if (!userEmail || userEmail.trim().length === 0 || !userEmail.includes("@")) {
+        setuserEmail("Invalid email");
+      }
+
+      if (!userPassword || userPassword.trim().length < 6) {
+        setuserPassword("Invalid password");
+      }
+
+      if (setuserEmail || setuserPassword) {
+        return;
+      }
+
+    alert(`userEmail: ${setuserEmail}, Password: ${setuserPassword}`);
   };
+
+
 
   return (
     <div>
@@ -33,8 +47,9 @@ function MyForm() {
           <Form.Control
             type="text"
             placeholder="Enter your username"
-            value={formData.username}
-            onChange={handleInputChange}
+            value={userEmail}
+            onChange={onInputChange(setuserEmail)}
+          
           />
         </Form.Group>
         {/* Password input */}
@@ -43,8 +58,8 @@ function MyForm() {
           <Form.Control
             type="password"
             placeholder="Enter your password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={userPassword}
+            onChange= {onInputChange(setuserPassword)}
           />
         </Form.Group>
         {/* Button component for form submission */}
@@ -52,6 +67,7 @@ function MyForm() {
       </Form>
     </div>
   );
-}
+};
+
 
 export default MyForm;
