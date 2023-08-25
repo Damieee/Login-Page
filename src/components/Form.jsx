@@ -9,19 +9,6 @@ function onClickEvent(event, onSubmit) {
   alert('User Logged in');
 }
 
-function MyButton({ onSubmit }) {
-  return (
-    <Button 
-    variant="primary" 
-    type="submit" 
-    className="w-100" 
-    onClick={(event) => onClickEvent(event, onSubmit)}
-  
-    >
-      Login
-    </Button>
-  );
-}
 function MyForm() {
   // State to hold form data
 
@@ -90,7 +77,14 @@ function MyForm() {
           />
         </Form.Group>
         {/* Button component for form submission */}
-        <MyButton/>
+        <Button 
+            variant="primary" 
+            type="submit" 
+            className="w-100" 
+            onClick={(event, onSubmit) => onClickEvent(event, onSubmit)}
+            >
+            Login
+          </Button>
       </Form>
     </div>
   );
