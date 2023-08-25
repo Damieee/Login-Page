@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import MyButton from './Button'; // Update the import path for MyButton component
 
+
 function MyForm() {
   // State to hold form data
 
@@ -14,8 +15,14 @@ function MyForm() {
   };
 
   // Function to handle form submission
-  const handleSubmit = async (event) => {
+  const handleSubmit = 
+  () => async (event, userEmail, userPassword) => {
     event.preventDefault();
+
+    console.log(`userEmail: ${userEmail}, Password: ${userPassword}`);
+
+
+
 
     // Clear previous error messages
     setuserEmail("");
@@ -29,11 +36,11 @@ function MyForm() {
         setuserPassword("Invalid password");
       }
 
-      if (setuserEmail || setuserPassword) {
-        return;
+      if (userEmail === "Invalid email" || userPassword === "Invalid password") {
+    return;
       }
 
-    alert(`userEmail: ${setuserEmail}, Password: ${setuserPassword}`);
+    
   };
 
 
