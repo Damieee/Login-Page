@@ -1,8 +1,27 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import MyButton from './Button'; // Update the import path for MyButton component
+import { Button } from 'react-bootstrap';
 
 
+
+function onClickEvent(event, onSubmit) {
+
+  alert('User Logged in');
+}
+
+function MyButton({ onSubmit }) {
+  return (
+    <Button 
+    variant="primary" 
+    type="submit" 
+    className="w-100" 
+    onClick={(event) => onClickEvent(event, onSubmit)}
+  
+    >
+      Login
+    </Button>
+  );
+}
 function MyForm() {
   // State to hold form data
 
@@ -67,10 +86,11 @@ function MyForm() {
             placeholder="Enter your password"
             value={userPassword}
             onChange= {onInputChange(setuserPassword)}
+            onSubmit={handleSubmit}
           />
         </Form.Group>
         {/* Button component for form submission */}
-        <MyButton onSubmit={handleSubmit} />
+        <MyButton/>
       </Form>
     </div>
   );
