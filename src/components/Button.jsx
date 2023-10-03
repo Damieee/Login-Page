@@ -2,10 +2,10 @@ import React from 'react';
 import {Button} from 'react-bootstrap';
 
 
-function MyButton() {
+function MyButton(prop) {
   return (
             <Button variant="primary" type="submit" className="w-100">
-                Login
+                {prop.name}
             </Button>
   );
 }

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyForm from './Form';
 import Header from './Header';
 import MyButton from './Button';
+import Containers from '../my_container.js';
 
 function App() {
   return (
@@ -13,7 +14,15 @@ function App() {
           <Form>
             <Header/>
             <MyForm/>
-            <MyButton/>
+            <MyButton 
+              name = {Containers[0].Login0}
+            />
+            <MyButton 
+              name = {Containers[1].Login1}
+            />
+            <MyButton 
+              name = {Containers[2].Login2}
+            />
           </Form>
         </Col>
       </Row>
